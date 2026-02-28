@@ -1,0 +1,44 @@
+name: fisherman_edusea
+description: AI-driven safety & prediction app for Indian coastal fishermen.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  # Offline storage
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+  # Networking
+  http: ^1.2.1
+  connectivity_plus: ^6.0.3
+
+  # Location
+  geolocator: ^12.0.0
+
+  # Map tiles
+  flutter_map: ^7.0.2
+  latlong2: ^0.9.1
+
+  # State management
+  provider: ^6.1.2
+
+  # Platform utilities
+  url_launcher: ^6.2.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.2
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/data/north_sea_fishing_prediction.geojson

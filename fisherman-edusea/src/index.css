@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ocean-50: #e6f5ff;
+  --color-ocean-100: #b3e0ff;
+  --color-ocean-200: #80ccff;
+  --color-ocean-300: #4db8ff;
+  --color-ocean-400: #1aa3ff;
+  --color-ocean-500: #008ae6;
+  --color-ocean-600: #006bb3;
+  --color-ocean-700: #004d80;
+  --color-ocean-800: #002e4d;
+  --color-ocean-900: #001a2e;
+  --color-ocean-950: #000f1a;
+}
+
+/* ── Base body ── */
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: linear-gradient(145deg, #020617 0%, #0a1628 40%, #0c1e3a 70%, #0a1628 100%);
+  color: #f1f5f9;
+  min-height: 100vh;
+}
+
+/* ── Glassmorphism ── */
+.glass {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.glass-panel {
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(148, 163, 184, 0.10);
+}
+
+.glass-card {
+  background: rgba(15, 23, 42, 0.40);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(15, 23, 42, 0.55);
+  border-color: rgba(148, 163, 184, 0.18);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.glass-light {
+  background: rgba(30, 41, 59, 0.50);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(148, 163, 184, 0.10);
+}
+
+.glass-accent {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.12) 0%, rgba(59, 130, 246, 0.08) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(6, 182, 212, 0.20);
+}
+
+/* ── Animations ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes slideDown {
+  from { opacity: 0; max-height: 0; }
+  to   { opacity: 1; max-height: 2000px; }
+}
+@keyframes waveFlow {
+  0%, 100% { transform: translateX(-20%) scaleY(1); }
+  50%      { transform: translateX(0%) scaleY(1.08); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(6, 182, 212, 0.3); }
+  50%      { box-shadow: 0 0 24px rgba(6, 182, 212, 0.6); }
+}
+@keyframes barFill {
+  from { width: 0%; }
+}
+@keyframes bgWave {
+  0%   { transform: translateX(0) translateZ(0) scaleY(1); }
+  50%  { transform: translateX(-25%) translateZ(0) scaleY(0.55); }
+  100% { transform: translateX(-50%) translateZ(0) scaleY(1); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.5s ease-out both; }
+.animate-fade-in { animation: fadeIn 0.4s ease-out both; }
+.animate-fade-in-scale { animation: fadeInScale 0.45s ease-out both; }
+.animate-slide-down { animation: slideDown 0.4s ease-out both; }
+.animate-wave-flow { animation: waveFlow 6s ease-in-out infinite; }
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-glow-pulse { animation: glowPulse 3s ease-in-out infinite; }
+.animate-bar-fill { animation: barFill 1.2s ease-out both; }
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 30%, rgba(255,255,255,0.06) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite;
+}
+
+/* delay classes for stagger */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+
+/* ── Background ocean wave effect ── */
+.bg-wave-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-wave-shape {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent 0%, rgba(6, 182, 212, 0.04) 70%, rgba(6, 182, 212, 0.08) 100%);
+  border-radius: 100% 100% 0 0;
+  animation: bgWave 12s linear infinite;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(6, 182, 212, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 182, 212, 0.5);
+}
+
+/* ── Region selector ── */
+.region-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+}
+
+/* ── Metric card glow ── */
+.metric-safe    { border-left: 3px solid #10b981; }
+.metric-moderate { border-left: 3px solid #f59e0b; }
+.metric-high    { border-left: 3px solid #ef4444; }
+
+/* ── Level badges ── */
+.level-badge-cyan    { background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(6, 182, 212, 0.05)); border: 1px solid rgba(6, 182, 212, 0.3); color: #22d3ee; }
+.level-badge-blue    { background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.05)); border: 1px solid rgba(59, 130, 246, 0.3); color: #60a5fa; }
+.level-badge-purple  { background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(168, 85, 247, 0.05)); border: 1px solid rgba(168, 85, 247, 0.3); color: #c084fc; }
+.level-badge-amber   { background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.05)); border: 1px solid rgba(245, 158, 11, 0.3); color: #fbbf24; }
+.level-badge-emerald { background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.05)); border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; }
